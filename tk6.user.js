@@ -1,6 +1,6 @@
 // ==Userscript==
 // @name tkа6767
-// @description tk
+// @description tkslots
 // @author soloromail@gmail.com (Deimon, Старовер)
 // @include http:///tkonline.mobi/*
 // ==/Userscript==
@@ -311,6 +311,12 @@ legendsLink(legendsHrefLink("fire"), 50/speed);
 legendsLink(legendsFindLink("Обновить"), 3000/speed);
 if(legendsFindText("Награда")) {
 legendsLink(legendsFindLink("Обновить"), 50/speed);
+}
+}
+if(legendsFindText("ВолшеБар")) {
+document.getElementById('enable').innerHTML="Казино";
+if(legendsFindText("ВолшеБар")&&!legendsFindText("недостаточно")) {
+legendsLink(legendsFindLink("Поставить"), legends(1, 7));
 }
 }
 }
