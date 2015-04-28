@@ -1,0 +1,215 @@
+<!DOCTYPE html PUBLIC "-//WAPFORUM//DTD XHTML Mobile 1.0//EN" "http://www.wapforum.org/DTD/xhtml-mobile10.dtd">
+<html>
+<head><meta content="text/html; charset=UTF-8" http-equiv="content-type">
+<title>ZLO</title>
+<style>
+html {
+margin: 0; padding: 0;
+background: #000;
+}
+body {
+width: 100%;
+margin: 0; padding: 0;
+font-family: georgia;
+}
+lg {
+width: 180px;
+font-size: 44pt;
+color: #a00;
+display: block;
+margin: auto;
+text-align: center;
+font-family: georgia;
+}
+nm {
+width: 180px;
+font-size: 12pt;
+color: #a00;
+display: block;
+margin: auto;
+text-align: center;
+font-family: georgia;
+font-weight: bold;
+}
+abt {
+width: 180px;
+font-size: 12pt;
+color: #aaa;
+display: block;
+margin: auto;
+text-align: center;
+
+}
+gameto {
+width: 180px;
+height: 30px;
+background: #550000;
+font-size: 20pt;
+color: #ddd;
+display: block;
+margin: 5px auto;
+text-align: center;
+font-family: georgia;
+cursor: pointer;
+}
+gameto:hover {
+background: #660000;
+color: #eee;
+}
+stat {
+width: 180px;
+font-size: 14pt;
+color: #aaa;
+display: block;
+margin: auto;
+text-align: left;
+font-family: georgia;
+}
+comm {
+width: 180px;
+font-size: 10pt;
+color: #aaa;
+display: block;
+margin: auto;
+text-align: center;
+font-family: georgia;
+}
+</style>
+</head>
+<body>
+
+<location id="index">
+<lg>ZLO</lg>
+<abt>И настанет момент, когда говно вырвется наружу...</abt>
+<gameto onclick="too('start');">ИГРАТЬ</gameto>
+<abt style="color: #555;"><small>Создано в самой жопе ада</small></abt>
+</location>
+<location id="game" style="display: none;">
+<nm>Площадь Мира</nm>
+<stat>Людей: <t id="people">0</t></stat>
+<stat>Говна: <t id="copro">0</t></stat>
+<comm>Привет!</comm>
+<gameto onclick="too('ev1');">Насрать</gameto>
+<gameto onclick="too('ev2');">Пачкать</gameto>
+<gameto onclick="too('ev3');">Швырять</gameto>
+<gameto onclick="too('ev4');">Жрать</gameto>
+<gameto onclick="too('ev5');">Обдристать</gameto>
+</location>
+<location id="end" style="display: none;">
+<lg>Срань!</lg>
+<gameto onclick="too('index');">Заново</gameto>
+</location>
+<script>
+var people=0;
+var copro=0;
+var stade=0;
+var modpeople=13;
+var modunit=7;
+var modcopro=3;
+
+var state=['Площадь Мира', 'Улица Свободы', 'Коммунистическая', 'Комсомольская', 'Рождественская', 'Баумана'];
+function hide(a) {
+document.getElementById(a).style.display='none';
+}
+function nohide(a) {
+document.getElementById(a).style.display='block';
+}
+function nmloc(a) {
+for(o=0; o<=document.getElementsByTagName('nm').length-1; o++){
+document.getElementsByTagName('nm')[o].innerHTML=a;
+}
+}
+function setcomm(a) {
+for(o=0; o<=document.getElementsByTagName('comm').length-1; o++){
+document.getElementsByTagName('comm')[o].innerHTML=a;
+}
+}
+function setstat(e,a) {
+document.getElementById(e).innerHTML=a;
+}
+function legends(a, z) {var num=(Math.floor(Math.random() * (a - z)) + z); return num;}
+pz=1;
+function too(a) {
+if(people==0&&stade!=5&&pz!=1) {stade+=1; a='start'}
+
+if(a=='start') {
+hide('index');
+nohide('game');
+nmloc(state[stade]);
+people=legends(modpeople*(stade+1),modpeople*(stade+1)*100);
+setstat('people', people);
+setstat('copro', copro);
+pz=0;
+}
+if(people==0&&stade==5) {
+stade=0;people=0;copro=0;
+hide('game');
+nohide('end');
+pz=1;
+}
+if(a=='index') {
+hide('end');
+nohide('index');
+}
+if(people>0) {
+if(a=='ev1') {
+gn=legends(modcopro*(stade+1),modcopro*(stade+1)*10);
+copro+=gn;
+setstat('copro', copro);
+ss=parseInt(legends(modpeople*(stade+1),modpeople*(stade+1)*10)*0.13);
+people-=ss;
+if(people<0) people=0;
+setstat('people', people);
+setcomm('Ты высрал '+gn+' килограмм говна!');
+}
+if(a=='ev2') {
+if(copro>0) {
+copro-=legends(modcopro*(stade+1),modcopro*(stade+1)*10);
+if(copro<0) copro=0;
+setstat('copro', copro);
+ss=parseInt(legends(modpeople*(stade+1),modpeople*(stade+1)*10)*0.8);
+people-=ss;
+if(people<0) people=0;
+setstat('people', people);
+setcomm('Ты испачкал говном '+ss+' человек!');
+}
+}
+if(a=='ev3') {
+if(copro>0) {
+copro-=legends(modcopro*(stade+1),modcopro*(stade+1)*12);
+if(copro<0) copro=0;
+setstat('copro', copro);
+ss=parseInt(legends(modpeople*(stade+1),modpeople*(stade+1)*10)*1.2);
+people-=ss;
+if(people<0) people=0;
+setstat('people', people);
+setcomm('В страхе убежали '+ss+' человек!');
+}
+}
+if(a=='ev4') {
+if(copro>0) {
+copro-=legends(modcopro*(stade+1),modcopro*(stade+1)*12);
+if(copro<0) copro=0;
+setstat('copro', copro);
+ss=parseInt(legends(modpeople*(stade+1),modpeople*(stade+1)*10)*0.4);
+people-=ss;
+if(people<0) people=0;
+setstat('people', people);
+setcomm('Тебя испугались '+ss+' человек');
+}
+}
+if(a=='ev5') {
+//copro-=legends(modcopro*(stade+1),modcopro*(stade+1)*14);
+//if(copro<0) copro=0;
+//setstat('copro', copro);
+ss=parseInt(legends(modpeople*(stade+1),modpeople*(stade+1)*10)*1.5);
+people-=ss;
+if(people<0) people=0;
+setstat('people', people);
+setcomm('Ты обдристал '+ss+' людей');
+}
+}
+}
+</script>
+</body>
+</html>
