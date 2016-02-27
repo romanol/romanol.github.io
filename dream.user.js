@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         dream_Bot
-// @description  полныйmod
+// @description  полныйmod1
 // @author       soloromail@gmail.com, Deimon, Ненчык-патыр, Старовер
 // @match        http://dreamwar.ru/*
 // ==/UserScript==
