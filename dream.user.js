@@ -38,7 +38,7 @@ function legendsI(name, tx) {document.getElementById(name).innerHTML=tx;}
 function legendsClick(tx, sec) {for(var q=0;q<document.forms.length;q++){for(var y=0;y<document.forms[q].elements.length;y++){if (document.forms[q].elements[y].value.match(tx)){var go = document.forms[q].elements[y];setTimeout(function(){go.click();}, sec);}}}}
 function legendsAllCheck() {
 for(q=0;q<document.getElementsByTagName('input').length;q++){
-if(document.getElementsByTagName('input')[q].getAttribute('type') == 'checkbox') document.getElementsByTagName('input')[q].checked = true;
+if(document.getElementsByTagName('input')[q].getAttribute('type') == 'checkbox'&&document.getElementsByTagName('input')[q].value!=82) document.getElementsByTagName('input')[q].checked = true;
 }
 }
 function legends(a, z) {var num=(Math.floor(Math.random() * (a - z)) + z); return num;}
@@ -112,7 +112,7 @@ legendsSelect('attack', legends(0, legendsSelCount('attack')));
 legendsSelect('defence', legends(0, legendsSelCount('defence')));
 
 //Если выбрать, то все Галочки проставятся
-//legendsAllCheck();
+legendsAllCheck();
 //Атакуем (Нападаем) ""
 legendsClick('OK', 100);
 
