@@ -7,6 +7,7 @@
 /* jshint -W097 */
 if(location.href.match('dreamwar.ru')) {
 speed=321;
+vst = 1;//1 - вступаем в заявки, 0 - нет
 //###########
 //##ФУНКЦИИ##
 //###########
@@ -82,7 +83,7 @@ legendsLink(legendsFindLink("Обновить"),5000); //Обновляем ст
 //!legendsFindLink("присоединиться")&&
 legendsLink(legendsFindLink("Принято"),1);
 
-legendsLink(legendsFindLink("присоединиться"),1/speed);
+if(vst==1) legendsLink(legendsFindLink("присоединиться"),1/speed);
 
 if(legendsFindText('Подать заявку')){
 //if(!legendsFindLink("присоединиться"))
