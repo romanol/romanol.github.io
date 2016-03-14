@@ -68,6 +68,9 @@ legendsLink(window.location.href,1);
 }
 
 
+if(legendsFindText('Возможно вы уже')){
+  legendsLink('http://dreamwar.ru/fight_group.php?h=1&UIN='+getParameterByName('UIN',legendsFindLink('На главную'))+'&&pass='+getParameterByName('pass',legendsFindLink('На главную'))+'&sid='+getParameterByName('sid',legendsFindLink('rand')),1);
+}
 
 
 
