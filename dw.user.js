@@ -79,7 +79,7 @@ function legendsSelCount(n) {objSel = document.getElementsByName(n)[0]; return o
 //###########
 
 if(legendsFindText('503 Service Temporarily Unavailable')){
-//legendsLink(window.location.href,1);
+legendsLink(window.location.href,1);
 }
 
 
