@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name         DreamWar
+// @name         DreamWar2
 // @description  полный
 // @author       soloromail@gmail.com, Deimon, Ненчык-патыр, Старовер
 // @match        http://dreamwar.ru/*
@@ -50,9 +50,11 @@ function legendsCoord(hh) {for(var i=0;i<document.getElementsByTagName('b').leng
 function legendsSet(name, tx) {if(localStorage.setItem(name, tx)) { return true; } else { return false;}}
 function legendsI(name, tx) {document.getElementById(name).innerHTML=tx;}
 function legendsClick(tx, sec) {for(var q=0;q<document.forms.length;q++){for(var y=0;y<document.forms[q].elements.length;y++){if (document.forms[q].elements[y].value.match(tx)){var go = document.forms[q].elements[y];setTimeout(function(){go.click();}, sec);}}}}
-function legendsAllCheck() {
-for(q=0;q<document.getElementsByTagName('input').length;q++){
-if(document.getElementsByTagName('input')[q].getAttribute('type') == 'checkbox') document.getElementsByTagName('input')[q].checked = true;
+function legendsAllCheck() { 
+for(q=0;q<document.getElementsByTagName('input').length;q++){ 
+if(document.getElementsByTagName('input')[q].getAttribute('type') == 'checkbox'&&document.getElementsByTagName('input')[q].value==123) document.getElementsByTagName('input')[q].checked = true; 
+if(document.getElementsByTagName('input')[q].getAttribute('type') == 'checkbox'&&document.getElementsByTagName('input')[q].value==3) document.getElementsByTagName('input')[q].checked = true; 
+if(document.getElementsByTagName('input')[q].getAttribute('type') == 'checkbox'&&document.getElementsByTagName('input')[q].value==63) document.getElementsByTagName('input')[q].checked = true; 
 }
 }
 function legends(a, z) {var num=(Math.floor(Math.random() * (a - z)) + z); return num;}
@@ -151,6 +153,7 @@ if(legendsFindText('момент Вы нанесли урона')&&legendsFindTe
 }else{if(legendsFindText('По кому бьем')){
 	legendsSelect('attack', legends(0, legendsSelCount('attack')));
 legendsSelect('defence', legends(0, legendsSelCount('defence')));
+legendsAllCheck();
 legendsClick('OK', 100);
 }
 }
